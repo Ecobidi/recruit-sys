@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/css/app.css" type="text/css">
+<title><%= appname %></title>
+</head>
+<body style="background-color: rgb(0 0 0 / 8%)">
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/client"><%= appname %></a>
+		<div>
+      <a class="btn btn-outline-light" style="border: none;" href="/client">Home</a>
+			<a class="btn btn-outline-light active" style="border: none;" href="/client/profile">Profile</a>
+			<a class="btn btn-outline-light" style="border: none;" href="/client/logout">Logout</a>
+		</div>
+	</nav>
+	
+	<div class="container bg-white">
+  <div>
+    <% if (success_msg && success_msg.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong><%= success_msg %></strong> 
+      </div>
+      <script>
+        $(".alert").alert();
+      </script>
+    <% } %>
+  </div>
+  <div class="row space">
+    <div class="col-md-3 col-sm-12 mb-3 text-center text-md-left">
+      <img src='<%= applicant.photo ? applicant.photo : "" %>' style="width: 172px; height: 200px; border-radius: 12px; background-color: white;" />
+      
+      <div class="my-3">
+        <form action="/client/change-photo" method="POST" enctype="multipart/form-data" class="form-inline">
+          <input type="file" name="photo" class="form-control" required>
+          <input type="submit" class="btn btn-danger btn-sm btn-block" value="Change Profile Photo">
+        </form>
+      </div>
+
+      <div class="my-3">
+        <form action="/client/upload-cv" method="POST" enctype="multipart/form-data" class="form-inline">
+          <input type="file" name="cv" class="form-control" required>
+          <input type="submit" class="btn btn-info btn-sm btn-block" value="Upload CV">
+        </form>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-12">
+      <div class="text-center text-md-left">
+        <p class="lead mt-0 mb-3">Personal Information</p>
+        <h5><%= applicant.surname + ", " + applicant.other_names %></h5>
+      </div>
+      <table class="table table-sm-responsive table-responsive">
+        <tr>
+          <td><strong>Email:</strong></td>
+          <td><%= applicant.email %></td>
+        </tr>
+        <tr>
+          <td><strong>Phone:</strong></td>
+          <td><%= applicant.phone %></td>
+        </tr>
+        <tr>
+          <td><strong>Gender:</strong></td>
+          <td><%= applicant.gender %></td>
+        </tr>
+        <tr>
+          <td><strong>Residential Address:</strong></td>
+          <td><%= applicant.address%></td>
+        </tr>
+        <tr>
+          <td><strong>Town of Residence:</strong></td>
+          <td><%= applicant.town %></td>
+        </tr>
+        <tr>
+          <td><strong>State of Origin:</strong></td>
+          <td><%= applicant.state_of_origin %></td>
+        </tr>
+      </table>
+
+      <p class="lead">Additional Information</p>
+      
+      <table class="table table-sm-responsive table-responsive">
+        <tr>
+          <td><strong>Academic Qualification:</strong></td>
+          <td><%= applicant.academic_qualification %></td>
+        </tr>
+        <tr>
+          <td><strong>Religion:</strong></td>
+          <td><%= applicant.religion %></td>
+        </tr>
+        <tr>
+          <td><strong>Languages:</strong></td>
+          <td><%= applicant.languages %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  </div>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<%- include ('../partials/top') %>   
+<div class="row space">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+      <h3 class="page-title">New Job Offer</h3>
+    </div>
+  </div> 
+</div>
+<div class="row pb-2">
+  <div class="col-12">
+    <form action="/admin/offers/new" method="POST" class="card">
+      <% if (error_msg && error_msg.length > 0) { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <strong><%= error_msg %></strong> 
+        </div>
+        <script>
+          $(".alert").alert();
+        </script>
+      <% } %>
+
+      <fieldset class="row card-body">
+        <div class="col-12">
+          <legend class="ml-0">Details</legend>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Company: <strong class="text-danger">*</strong></label>
+          <select required class="form-control" name="company">
+            <option value=''>-- select company --</option>
+            <% companies.forEach(c => { %>
+              <option value='<%= c._id %>'><%= c.serial_number + " - " + c.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Position: <strong class="text-danger">*</strong></label>
+          <input required type="text" class="form-control" name="position">
+        </div>
+        <div class="form-group col-md-3">
+          <label>Number of Vacancies: <strong class="text-danger">*</strong></label>
+          <input required type="number" class="form-control" name="vacancies">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Qualification Level: <strong class="text-danger">*</strong></label>
+          <select required class="form-control" name="qualification_level">
+            <option value=''>-- select grade level --</option>
+            <option>Entry/Junior Level</option>
+            <option>Mid Level</option>
+            <option>Experience/Senior Level</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Salary Range: <strong class="text-danger">*</strong></label>
+          <input required type="text" class="form-control" name="salary_range">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Job Location: <strong class="text-danger">*</strong></label>
+          <input required type="text" class="form-control" name="job_location">
+        </div>
+        <div class="form-group col-md-3">
+          <label>Application Start Date: <strong class="text-danger">*</strong></label>
+          <input required type="date" class="form-control" name="state_date">
+        </div>
+        <div class="form-group col-md-3">
+          <label>Application End Date: <strong class="text-danger">*</strong></label>
+          <input required type="date" class="form-control" name="end_date">
+        </div>
+      </fieldset>
+     
+      <div class="form-group mt-4">
+        <button class="btn btn-primary form-control" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</main>
+
+<%- include ('../partials/bottom') %>   

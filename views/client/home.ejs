@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/css/app.css" type="text/css">
+<title><%= appname %></title>
+</head>
+<body style="background-color: rgb(0 0 0 / 8%)">
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/client"><%= appname %></a>
+		<div>
+      <a class="btn btn-outline-light active" style="border: none;" href="/client">Home</a>
+			<a class="btn btn-outline-light" style="border: none;" href="/client/profile">Profile</a>
+			<a class="btn btn-outline-light" style="border: none;" href="/client/logout">Logout</a>
+		</div>
+	</nav>
+	
+	<div class="container bg-white">
+		<div class="row space">
+			<% if (success_msg && success_msg.length > 0) { %>
+				<div class="col-12">
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong><%= success_msg %></strong> 
+					</div>
+				</div>
+        <script>
+          $(".alert").alert();
+        </script>
+      <% } %>
+			<div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+				<a href="/client/available-jobs" class="card bg-danger text-white d-flex p-4 align-items-center big-link">
+					<i class="fa fa-briefcase icon" aria-hidden="true"></i>
+					<div class="d-inline-block text-center">
+						<p class="card-text">View Job Offers</p>  
+					</div>
+				</a>
+			</div>	
+			<div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+				<a href="/client/applied-jobs" class="card bg-info text-white d-flex p-4 align-items-center big-link">
+					<i class="fa fa-archive icon" aria-hidden="true"></i>
+					<div class="d-inline-block text-center">
+						<p class="card-text">My Job Applications</p>  
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+				<a href="/client/profile" class="card bg-dark text-white d-flex p-4 align-items-center big-link">
+					<i class="fa fa-user icon" aria-hidden="true"></i>
+					<div class="d-inline-block text-center">
+						<p class="card-text">View Profile</p>  
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

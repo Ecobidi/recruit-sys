@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/css/app.css" type="text/css">
+<title><%= appname %></title>
+</head>
+<body style="background-color: rgb(0 0 0 / 8%);">
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/client"><%= appname %></a>
+		<div>
+      <a class="btn btn-outline-light" style="border: none;" href="/client">Home</a>
+			<a class="btn btn-outline-light" style="border: none;" href="/client/profile">Profile</a>
+			<a class="btn btn-outline-light" style="border: none;" href="/client/logout">Logout</a>
+		</div>
+	</nav>
+	
+	<div class="container bg-white">
+    <div class="row"> 
+      <div class="col-12">
+        <div class="border-bottom pb-2 my-4">
+          <h3 class="page-title">Job Offers</h3>
+        </div>
+        <table class="table table-striped table-bordered">
+          <thead class="font-weight-bold">
+            <tr>
+              <td>#</td>
+              <td>Position</td>
+              <td>Vacancies</td>
+              <td>Qualification Level</td>
+              <td>Job Location</td>
+              <td>Salary Range</td>
+              <td>Company</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (job_offers.length == 0) { %>
+              <tr style="background-color: inherit;">
+                <td colspan="9" class="bg-light">
+                  <div class="py-2 text-center">
+                    <h4 class="lead"><i class="fa fa-search-minus" aria-hidden="true"></i> No Result(s) Found</h4>
+                  </div>
+                </td>
+              </tr>
+            <% } %>
+            <% job_offers.forEach((m) => { %>
+              <tr> 
+                <td><%= m.serial_number %></td>
+                <td><span><%= m.position %></span></td>
+                <td><span><%= m.vacancies %></span></td>
+                <td><span><%= m.qualification_level %></span></td>
+                <td><span><%= m.job_location %></span></td>
+                <td><span><%= m.salary_range %></span></td>
+                <td><span><%= m.company_name %></span></td>
+                <td>
+                  <a href='<%= "/client/apply-job/" + m.serial_number %>' class="btn btn-sm btn-info text-white">Apply <i class="ml-2 fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+	</div>
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

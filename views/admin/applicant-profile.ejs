@@ -1,0 +1,62 @@
+<%- include ('../partials/top') %>
+
+<div class="row space">
+  <div class="col-md-3 col-sm-12 mb-3 text-center text-md-left">
+    <img src='<%= applicant.photo ? applicant.photo : "" %>' style="width: 172px; height: 200px; border-radius: 12px; background-color: white;" />
+    
+    <div class="my-3">
+      <a href='<%= applicant.cv ? applicant.cv : "/default-cv.pdf" %>' target="_blank" class="btn btn-info btn-block">Download CV</a>
+    </div>
+  </div>
+  <div class="col-md-9 col-sm-12">
+    <div class="text-center text-md-left">
+      <p class="lead mt-0 mb-3">Personal Information</p>
+      <h5><%= applicant.surname + ", " + applicant.other_names %></h5>
+    </div>
+    <table class="table table-sm-responsive table-responsive">
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><%= applicant.email %></td>
+      </tr>
+      <tr>
+        <td><strong>Phone:</strong></td>
+        <td><%= applicant.phone %></td>
+      </tr>
+      <tr>
+        <td><strong>Gender:</strong></td>
+        <td><%= applicant.gender %></td>
+      </tr>
+      <tr>
+        <td><strong>Residential Address:</strong></td>
+        <td><%= applicant.address%></td>
+      </tr>
+      <tr>
+        <td><strong>Town of Residence:</strong></td>
+        <td><%= applicant.town %></td>
+      </tr>
+      <tr>
+        <td><strong>State of Origin:</strong></td>
+        <td><%= applicant.state_of_origin %></td>
+      </tr>
+    </table>
+
+    <p class="lead">Additional Information</p>
+    
+    <table class="table table-sm-responsive table-responsive">
+      <tr>
+        <td><strong>Academic Qualification:</strong></td>
+        <td><%= applicant.academic_qualification %></td>
+      </tr>
+      <tr>
+        <td><strong>Religion:</strong></td>
+        <td><%= applicant.religion %></td>
+      </tr>
+      <tr>
+        <td><strong>Languages:</strong></td>
+        <td><%= applicant.languages %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%- include ('../partials/bottom') %>
